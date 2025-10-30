@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\7Java8\Desktop\FocusStep\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2049216379.index
+1364617802.index
+2742678858.index
+3879078535.index
+2839754509.index
+2061097800.index

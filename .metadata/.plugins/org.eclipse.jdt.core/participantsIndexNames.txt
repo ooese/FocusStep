@@ -1,0 +1,3 @@
+INDEX VERSION 1.134
+C:\Users\7Java8\Desktop\FocusStep\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2926766081.index
+\ForcusStep\src\main\java
