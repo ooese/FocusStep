@@ -9,8 +9,9 @@ import java.sql.SQLException;
 import model.Account;
 import model.Login;
 
+
 public class AccountsDAO {
-	private final String JDBC_URL = "jdbc:h2:tcp://localhost/~/desktop/H2/FocusStep";
+	private final String JDBC_URL = "jdbc:h2:~/desktop/H2/FocusStep";
 	private final String DB_USER = "sa";
 	private final String DB_PASS = "";
 	
@@ -26,7 +27,7 @@ public class AccountsDAO {
 		try(Connection conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS)){
 			
 			//SELECT文を準備
-			String sql = "SELECT USER_ID,PASS,MAIL,NAME_SEI,NAME_MEI,NAME_SEI_ROMA,NAME_MEI_ROMA,AGE FROM USERACCOUNTS WHERE USER_ID = ? AND PASS = ?";
+			String sql = "SELECT USER_ID,PASS,MAIL,NAME_SEI,NAME_MEI,NAME_SEI_ROMA,NAME_MEI_ROMA,AGE FROM USER_ACCOUNTS WHERE USER_ID = ? AND PASS = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, login.getUserId());
 			pStmt.setString(2, login.getPass());
@@ -42,7 +43,7 @@ public class AccountsDAO {
 				String nameSei = rs.getString("NAME_SEI");
 				String nameMei = rs.getString("NAME_MEI");
 				String nameSeiRoma = rs.getString("NAME_SEI_ROMA");
-				String nameMeiRoma = rs.getString("NAME_ME_ROMAI");
+				String nameMeiRoma = rs.getString("NAME_MEI_ROMA");
 				int age = rs.getInt("AGE");
 				account = new Account(userId,pass,mail,nameSei,nameMei,nameSeiRoma,nameMeiRoma,age);
 			}
