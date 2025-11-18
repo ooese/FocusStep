@@ -80,18 +80,19 @@ import model.Task;
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 		
 				//INSERT文中の「？」に使用する値を設定してSQL文を完成
-				pStmt.setInt(1, task.getUserId());
-				pStmt.setString(2, task.getTitle());
-				pStmt.setString(3, task.getDescription());
-				pStmt.setString(4, task.getStatus());
-				pStmt.setInt(5, task.getPriority());
-				pStmt.setDate(6, task.getSchedule());
-				pStmt.setTime(7, task.getStartTime());
-				pStmt.setInt(8, task.getTarget());
-				pStmt.setInt(9, task.getActual());
-				pStmt.setTime(10, task.getReminderTime());
-				pStmt.setBoolean(11, task.isNextLocked());
-				pStmt.setInt(12, task.getNextTask());
+				pStmt.setInt(1, task.getTaskId());
+				pStmt.setInt(2, task.getUserId());
+				pStmt.setString(3, task.getTitle());
+				pStmt.setString(4, task.getDescription());
+				pStmt.setString(5, task.getStatus());
+				pStmt.setInt(6, task.getPriority());
+				pStmt.setDate(7, task.getSchedule());
+				pStmt.setTime(8, task.getStartTime());
+				pStmt.setInt(9, task.getTarget());
+				pStmt.setInt(10, task.getActual());
+				pStmt.setTime(11, task.getReminderTime());
+				pStmt.setBoolean(12, task.isNextLocked());
+				pStmt.setInt(13, task.getNextTask());
 				
 				//INSET文を実行（resultには追加された行数が代入される）
 				int result = pStmt.executeUpdate();

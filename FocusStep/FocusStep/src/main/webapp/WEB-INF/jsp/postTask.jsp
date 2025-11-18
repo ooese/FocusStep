@@ -4,10 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Focus Step ―タスク追加画面</title>
+<title>Focus Step ― タスク追加画面</title>
 </head>
 <body>
 <h1>タスク追加</h1>
+
+<a href="postTask">タスク追加</a>
+<a href="">タスク編集</a>
+<a href="main">タスク編集</a>
+
+
 <form action="Main" method="post">
 タスク名：<input type="title" name=""><br>
 詳細：<input type="description" name=""><br>
