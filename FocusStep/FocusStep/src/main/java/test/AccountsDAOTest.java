@@ -6,11 +6,14 @@ import dao.AccountsDAO;
 import model.Account;
 import model.Login;
 
+
 public class AccountsDAOTest {
 	public static void main(String[] args) {
 	testFindByLoginOK(); //ユーザーが見つかる場合のテスト
 	testFindByLoginNG(); //ユーザーが見つからない場合のテスト
 	}
+	
+	
 	public static void testFindByLoginOK() {
 		Login login = new Login("yusuke.minato@miyabilink.jp","0123456789");//正しいID・PWを入力
 		AccountsDAO dao = new AccountsDAO();
@@ -32,10 +35,12 @@ public class AccountsDAOTest {
 			}
 		}
 	
+	
 	public static void testFindByLoginNG() {
 		Login login = new Login("00000000@00000.00","0000000000");//間違ったID・PWを入力
 		AccountsDAO dao = new AccountsDAO();
 		Account result = dao.findByLogin(login);
+		
 		if (result == null) {
 			System.out.println("testFindByLoginNG:成功しました");
 		} else {

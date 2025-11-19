@@ -8,6 +8,8 @@ public class LoginLogicTest {
 		testExecuteOK(); //ログイン成功のテスト
 		testExecuteNG(); //ログイン失敗のテスト
 	}
+	
+	
 	public static void testExecuteOK() {
 		Login login = new Login("yusuke.minato@miyabilink.jp","0123456789"); //正しいID・PWを入力
 		LoginLogic bo = new LoginLogic();
@@ -18,6 +20,8 @@ public class LoginLogicTest {
 			System.out.println("testExecuteOK:失敗しました");
 		}
 	}
+	
+	
 	public static void testExecuteNG() {
 		Login login = new Login("yusuke.minato@miyabilink.jp","0000000000"); //間違ったID・PWを入力
 		LoginLogic bo = new LoginLogic();

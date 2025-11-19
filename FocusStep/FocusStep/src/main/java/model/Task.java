@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 
-
 public class Task implements Serializable {
 		private int taskId; //ID
 		private int userId; //ユーザーID
@@ -19,9 +18,8 @@ public class Task implements Serializable {
 		private Time reminderTime; //リマインダー通知時間
 		private boolean nextLocked; //次のタスクをロックするか
 		private int nextTask; //次に表示するタスクID（連携）
-		
-		public Task() {}
 
+		
 		public Task(int taskId, int userId, String title, String description, String status, int priority,
 				Date schedule, Time startTime, int target, int actual, Time reminderTime, boolean nextLocked,
 				int nextTask) {
@@ -40,6 +38,7 @@ public class Task implements Serializable {
 			this.nextTask = nextTask;
 		}
 
+		
 		public int getTaskId() {
 			return taskId;
 		}

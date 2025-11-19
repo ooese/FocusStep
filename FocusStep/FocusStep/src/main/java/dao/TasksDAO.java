@@ -14,7 +14,7 @@ import model.Task;
 
 	public class TasksDAO {
 		//データベース接続に使用する情報
-		private final String JDBC_URL = " jdbc:h2:tcp://localhost/~/desktop/H2/FocusStep";
+		private final String JDBC_URL = "jdbc:h2:tcp://localhost/~/desktop/H2/FocusStep";
 		private final String DB_USER = "sa";
 		private final String DB_PASS = "";
 
@@ -32,7 +32,7 @@ import model.Task;
 			try(Connection conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS)){
 				
 				//SELECT文の準備
-				String sql = "SELECT TASK_ID,USER_ID,TITLE,DESCRIPTION,STATUS,PRIORITY,SCHEDULED_DATE,START_TIME,TARGET_DURATION_MIN,ACTUAL_DURATION_MIN,REMINDER_TIME,IS_NEXT_LOCKED,NEXT_TASK_ID FROM TASKS ORDER BY ID DESC";
+				String sql = "SELECT TASK_ID,USER_ID,TITLE,DESCRIPTION,STATUS,PRIORITY,SCHEDULED_DATE,START_TIME,TARGET_DURATION_MIN,ACTUAL_DURATION_MIN,REMINDER_TIME,IS_NEXT_LOCKED,NEXT_TASK_ID FROM TASKS ORDER BY TASK_ID ASC";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				
 				//SELECT文を実行

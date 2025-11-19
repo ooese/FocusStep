@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -11,21 +10,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import model.Account;
-import model.GetTaskListLogic;
-import model.Task;
-
 /**
- * Servlet implementation class Main
+ * Servlet implementation class Logout
  */
-@WebServlet("/Main")
-public class Main extends HttpServlet {
+@WebServlet("/Logout")
+public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Main() {
+    public Logout() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,32 +32,23 @@ public class Main extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		//タスクリストを取得して、リクエストスコープに保存
-		GetTaskListLogic getTaskListLogic =
-				new GetTaskListLogic();
-		List<Task> taskList = getTaskListLogic.execute();
-		request.setAttribute("taskList", taskList);
-		
-		//ログインしているか確認するためセッションスコープからユーザー情報を取得
+		//セッションスコープを破棄
 		HttpSession session = request.getSession();
-		Account loginAccount = (Account)session.getAttribute("loginAccount");
+		session.invalidate();
 		
-		if(loginAccount == null) { //ログインしてない場合
-			//リダイレクト
-			response.sendRedirect("index.jsp");
-		} else { //ログイン済みの場合
-			//フォワード
-			RequestDispatcher dispatcher =
-					request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
-			dispatcher.forward(request, response);
-		}
+		//ログイン画面にフォワード
+		RequestDispatcher dispatcher =
+				request.getRequestDispatcher("WEB-INF/index.jsp");
+		dispatcher.forward(request,response);
+	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
