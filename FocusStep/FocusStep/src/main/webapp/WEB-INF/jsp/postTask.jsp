@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
 <html>
@@ -28,6 +29,33 @@
 リマインダー：<input type="time" name="reminderTime"><br>
 <input type="submit" value="追加">
 </form>
+<h2>タスク一覧</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>タイトル</th>
+        <th>詳細</th>
+        <th>状態</th>
+        <th>優先順位</th>
+        <th>日付</th>
+        <th>開始時刻</th>
+        <th>目標時間</th>
+        <th>リマインド</th>
+    </tr>
 
+    <c:forEach var="task" items="${taskList}">
+        <tr>
+            <td>${task.taskId}</td>
+            <td>${task.title}</td>
+            <td>${task.description}</td>
+            <td>${task.status}</td>
+            <td>${task.priority}</td>
+            <td>${task.schedule}</td>
+            <td>${task.startTime}</td>
+            <td>${task.target}</td>
+            <td>${task.reminderTime}</td>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>
