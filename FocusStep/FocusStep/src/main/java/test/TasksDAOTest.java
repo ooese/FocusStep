@@ -26,9 +26,7 @@ public class TasksDAOTest {
 	            "08:30:00".equals(task.getStartTime().toString()) && 
 	            task.getTarget() == 30 &&
 	            task.getActual() == 25 &&
-	            "08:15:00".equals(task.getReminderTime().toString()) &&
-	            task.isNextLocked() == false &&
-	            task.getNextTask() == 2) {
+	            "08:15:00".equals(task.getReminderTime().toString())) {
 
 	            System.out.println("testFindTaskOK:成功しました");
 	        } else {

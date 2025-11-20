@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="全体" id="Uy9vWb3SSoRUPmIDTyJW">
-        <mxGraphModel dx="690" dy="1606" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="1217" dy="2125" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="UsnvHYWbNvXskxH3oLIR-0"/>
                 <mxCell id="UsnvHYWbNvXskxH3oLIR-1" parent="UsnvHYWbNvXskxH3oLIR-0"/>
@@ -113,7 +113,7 @@
                 <mxCell id="UsnvHYWbNvXskxH3oLIR-36" value="&lt;b&gt;※今までの振り返り&lt;/b&gt;&lt;div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;過去のタスク&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;振り返りを見る&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;u style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251);&quot;&gt;戻る&lt;/u&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="UsnvHYWbNvXskxH3oLIR-1" vertex="1">
                     <mxGeometry x="616.1" y="920" width="135.1" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="UsnvHYWbNvXskxH3oLIR-38" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" parent="UsnvHYWbNvXskxH3oLIR-1" source="UsnvHYWbNvXskxH3oLIR-39" target="UsnvHYWbNvXskxH3oLIR-41" edge="1">
+                <mxCell id="UsnvHYWbNvXskxH3oLIR-38" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.991;exitY=0.219;exitDx=0;exitDy=0;exitPerimeter=0;" parent="UsnvHYWbNvXskxH3oLIR-1" source="UsnvHYWbNvXskxH3oLIR-39" target="UsnvHYWbNvXskxH3oLIR-41" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="751.2" y="454.375" as="sourcePoint"/>
                         <mxPoint x="442.49999999999983" y="377.5" as="targetPoint"/>
@@ -153,7 +153,7 @@
                 </mxCell>
                 <mxCell id="UsnvHYWbNvXskxH3oLIR-76" value="戻る&lt;div&gt;をクリック&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="UsnvHYWbNvXskxH3oLIR-75" vertex="1" connectable="0">
                     <mxGeometry x="-0.6491" y="1" relative="1" as="geometry">
-                        <mxPoint as="offset"/>
+                        <mxPoint x="7" as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="OZ_z9B1l_3OrqzxloT6S-1" value="" style="endArrow=none;dashed=1;html=1;exitX=0.997;exitY=0.634;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;" parent="UsnvHYWbNvXskxH3oLIR-1" source="UsnvHYWbNvXskxH3oLIR-27" target="0" edge="1">
@@ -358,7 +358,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="5TViWqL1LUesVxrq2fm7" name="ER図">
-        <mxGraphModel dx="665" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="728" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -490,7 +490,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="dlNq7mUWAz61FhjsYFdv" name="ログイン">
-        <mxGraphModel dx="665" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="728" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -779,7 +779,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="yi-KJvMLjNDMLgEdaVEO" name="タスク追加">
-        <mxGraphModel dx="720" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="728" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>

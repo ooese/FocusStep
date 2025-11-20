@@ -16,13 +16,14 @@ public class Task implements Serializable {
 		private int target; //目標時間（分）
 		private int actual; //実質時間（分）
 		private Time reminderTime; //リマインダー通知時間
-		private boolean nextLocked; //次のタスクをロックするか
-		private int nextTask; //次に表示するタスクID（連携）
+//		private boolean nextLocked; //次のタスクをロックするか
+//		private int nextTask; //次に表示するタスクID（連携）
 
-		
+		//SELECT用　taskId有り
 		public Task(int taskId, int userId, String title, String description, String status, int priority,
-				Date schedule, Time startTime, int target, int actual, Time reminderTime, boolean nextLocked,
-				int nextTask) {
+				Date schedule, Time startTime, int target, int actual, Time reminderTime) {
+//			boolean nextLocked, int nextTask
+			
 			this.taskId = taskId;
 			this.userId = userId;
 			this.title = title;
@@ -34,8 +35,23 @@ public class Task implements Serializable {
 			this.target = target;
 			this.actual = actual;
 			this.reminderTime = reminderTime;
-			this.nextLocked = nextLocked;
-			this.nextTask = nextTask;
+//			this.nextLocked = nextLocked;
+//			this.nextTask = nextTask;
+		}
+		
+		//INSERT用　taskID無し
+		public Task( int userId, String title, String description, String status, int priority, Date schedule, Time startTime, int target, int actual, Time reminderTime) {
+			
+			this.userId = userId;
+			this.title = title;
+			this.description = description;
+			this.status = status;
+			this.priority = priority;
+			this.schedule = schedule;
+			this.startTime = startTime;
+			this.target = target;
+			this.actual = actual;
+			this.reminderTime = reminderTime;
 		}
 
 		
@@ -82,13 +98,18 @@ public class Task implements Serializable {
 		public Time getReminderTime() {
 			return reminderTime;
 		}
+		
+		//setTaskId を追加 → create() 後に採番 ID をセットできる
+	    public void setTaskId(int taskId) {
+	        this.taskId = taskId;
+	    }
 
-		public boolean isNextLocked() {
-			return nextLocked;
-		}
-
-		public int getNextTask() {
-			return nextTask;
-		}
+//		public boolean isNextLocked() {
+//			return nextLocked;
+//		}
+//
+//		public int getNextTask() {
+//			return nextTask;
+//		}
 		
 	}

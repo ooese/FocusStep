@@ -11,8 +11,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import dao.TasksDAO;
 import model.Account;
-import model.GetTaskListLogic;
 import model.Task;
 
 /**
@@ -34,26 +34,25 @@ public class Main extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		//タスクリストを取得して、リクエストスコープに保存
-		GetTaskListLogic getTaskListLogic =
-				new GetTaskListLogic();
-		List<Task> taskList = getTaskListLogic.execute();
-		request.setAttribute("taskList", taskList);
 		
 		//ログインしているか確認するためセッションスコープからユーザー情報を取得
 		HttpSession session = request.getSession();
 		Account loginAccount = (Account)session.getAttribute("loginAccount");
+		int userId = (Integer) session.getAttribute("userId");
 		
 		if(loginAccount == null) { //ログインしてない場合
 			//リダイレクト
 			response.sendRedirect("index.jsp");
 		} else { //ログイン済みの場合
-			//フォワード
-			RequestDispatcher dispatcher =
-					request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
+			// タスク一覧を取得
+	        TasksDAO dao = new TasksDAO();
+	        List<Task> taskList = dao.findTodayTasksByUserId(userId);
+	        
+	        // リクエストスコープにセット
+	        request.setAttribute("taskList", taskList);	        
+
+			//Mainへフォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
@@ -62,7 +61,5 @@ public class Main extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 	}
-
 }

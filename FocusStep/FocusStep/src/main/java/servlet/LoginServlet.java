@@ -17,6 +17,9 @@ import model.Login;
 /**
  * Servlet implementation class LoginServlet
  */
+
+//LoginServletにしないと変数が被る
+
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -69,20 +72,22 @@ public class LoginServlet extends HttpServlet {
 	    AccountsDAO dao = new AccountsDAO();
 	    Account account = dao.findByLogin(login);
 
-	    if (account != null) { // ログイン成功
+	    if (account != null) { // ログイン成功したら
 	        HttpSession session = request.getSession();
 
-	        // フルネーム作成
+	        // フルネーム・ユーザーID作成
+	        int userId = account.getUserId();
 	        String fullName = account.getNameSei() + " " + account.getNameMei();
-
+	        
 	        // セッションに保存
-	        session.setAttribute("fullName", fullName);
+			session.setAttribute("userId", userId); //ユーザーID
+	        session.setAttribute("fullName", fullName); //フルネーム
 
 	        // メインページへフォワード
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
 	        dispatcher.forward(request, response);
 
-	    } else { // ログイン失敗
+	    } else { // ログイン失敗したら
 	        response.sendRedirect("LoginServlet");
 	    }
 	}

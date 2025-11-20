@@ -18,19 +18,12 @@
 <p><c:out value="${fullName}" />さん、おはようございます🌞</p>
 <p>ひとこと</p>
 
-<a href="postTask.jsp">タスク追加</a>
-<a href="">タスク編集</a>
-<a href="">今日の振り返り</a>
-<a href="">明日の準備</a>
+<a href="Navigation?action=post">タスク追加</a>
+<a href="Navigation?action=edit">タスク編集</a>
+<a href="Navigation?action=review">今日の振り返り</a>
+<a href="Navigation?action=tomorrow">明日の準備</a>
 
 <p>
-<% if(errorMsg != null){ %>
-<p><%= errorMsg%></p>
-<% } %>
-<% for (Task task : taskList){ %>
-<p><%= task.getPriority()%><%= task.getTitle()%></p>
-<% } %>
-
 今やること
 
 タイマー

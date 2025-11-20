@@ -18,7 +18,7 @@ import model.Task;
 		private final String DB_USER = "sa";
 		private final String DB_PASS = "";
 
-		
+		//findAllの定義
 		public List<Task>findAll(){
 			List<Task>taskList = new ArrayList<>();
 			
@@ -32,8 +32,9 @@ import model.Task;
 			try(Connection conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS)){
 				
 				//SELECT文の準備
-				String sql = "SELECT TASK_ID,USER_ID,TITLE,DESCRIPTION,STATUS,PRIORITY,SCHEDULED_DATE,START_TIME,TARGET_DURATION_MIN,ACTUAL_DURATION_MIN,REMINDER_TIME,IS_NEXT_LOCKED,NEXT_TASK_ID FROM TASKS ORDER BY TASK_ID ASC";
+				String sql = "SELECT TASK_ID,USER_ID,TITLE,DESCRIPTION,STATUS,PRIORITY,SCHEDULED_DATE,START_TIME,TARGET_DURATION_MIN,ACTUAL_DURATION_MIN,REMINDER_TIME FROM TASKS ORDER BY TASK_ID ASC";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
+//				,IS_NEXT_LOCKED,NEXT_TASK_ID
 				
 				//SELECT文を実行
 				ResultSet rs = pStmt.executeQuery();
@@ -51,10 +52,10 @@ import model.Task;
 					int target = rs.getInt("TARGET_DURATION_MIN");; //目標時間（分）
 					int actual = rs.getInt("ACTUAL_DURATION_MIN");; //実質時間（分）
 					Time reminderTime = rs.getTime("REMINDER_TIME");; //リマインダー通知時間
-					boolean nextLocked = rs.getBoolean("IS_NEXT_LOCKED");; //次のタスクをロックするか
-					int nextTask = rs.getInt("NEXT_TASK_ID");; //次に表示するタスクID（連携）
+//					boolean nextLocked = rs.getBoolean("IS_NEXT_LOCKED");; //次のタスクをロックするか
+//					int nextTask = rs.getInt("NEXT_TASK_ID");; //次に表示するタスクID（連携）
 					 
-					Task task = new Task(taskId,userId,title,description,status,priority,schedule,startTime,target,actual,reminderTime,nextLocked,nextTask);
+					Task task = new Task(taskId,userId,title,description,status,priority,schedule,startTime,target,actual,reminderTime);
 					taskList.add(task);
 				}
 			}catch(SQLException e) {
@@ -72,27 +73,25 @@ import model.Task;
 			} catch (ClassNotFoundException e) {
 				throw new IllegalStateException("JCBDドライバを読み込めませんでした");
 			}
+			
 			//データベース接続
 			try(Connection conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS)){
 			
 				//INSERT文の準備（task_idは自動連番なので指定しなくてよい）
-				String sql = "INSERT INTO TASKS()VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+				String sql = "INSERT INTO TASKS(USER_ID, TITLE, DESCRIPTION, STATUS, PRIORITY, SCHEDULED_DATE, START_TIME, TARGET_DURATION_MIN, ACTUAL_DURATION_MIN, REMINDER_TIME) VALUES(?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 		
 				//INSERT文中の「？」に使用する値を設定してSQL文を完成
-				pStmt.setInt(1, task.getTaskId());
-				pStmt.setInt(2, task.getUserId());
-				pStmt.setString(3, task.getTitle());
-				pStmt.setString(4, task.getDescription());
-				pStmt.setString(5, task.getStatus());
-				pStmt.setInt(6, task.getPriority());
-				pStmt.setDate(7, task.getSchedule());
-				pStmt.setTime(8, task.getStartTime());
-				pStmt.setInt(9, task.getTarget());
-				pStmt.setInt(10, task.getActual());
-				pStmt.setTime(11, task.getReminderTime());
-				pStmt.setBoolean(12, task.isNextLocked());
-				pStmt.setInt(13, task.getNextTask());
+				pStmt.setInt(1, task.getUserId());
+				pStmt.setString(2, task.getTitle());
+				pStmt.setString(3, task.getDescription());
+				pStmt.setString(4, task.getStatus());
+				pStmt.setInt(5, task.getPriority());
+				pStmt.setDate(6, task.getSchedule());
+				pStmt.setTime(7, task.getStartTime());
+				pStmt.setInt(8, task.getTarget());
+				pStmt.setInt(9, task.getActual());
+				pStmt.setTime(10, task.getReminderTime());
 				
 				//INSET文を実行（resultには追加された行数が代入される）
 				int result = pStmt.executeUpdate();
@@ -103,6 +102,12 @@ import model.Task;
 				e.printStackTrace();
 				return false;
 			}return true;
+		}
+
+		// 今日のタスク（ユーザーID指定）
+		public List<Task> findTodayTasksByUserId(int userId) {
+			// TODO 自動生成されたメソッド・スタブ
+			return null;
 		}
 	}
 
