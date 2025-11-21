@@ -38,7 +38,7 @@ public class Logout extends HttpServlet {
 		
 		//ログイン画面にフォワード
 		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("WEB-INF/index.jsp");
+				request.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request,response);
 	
 	}

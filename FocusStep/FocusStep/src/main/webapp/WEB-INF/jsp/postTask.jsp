@@ -6,14 +6,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- オリジナルCSS -->
+		<link rel="stylesheet" type="text/css" href="<c:url value='/css/style.css' />">
 <title>Focus Step ― タスク追加画面</title>
 </head>
 <body>
+<header class="page-header">
+	<nav>
+		<ul class="main-nav">
+			<li><a href="Logout">ログアウト</a></li>
+		</ul>
+	</nav>
+</header>
 <h1>タスク追加</h1>
 
-<a href="postTask">タスク追加</a>
+<!--下記リンクは、ボタンを押すと真ん中の画面表示が切り替わるようにしたい-->
+<a href="">タスク追加</a>
 <a href="">タスク編集</a>
-<a href="main">タスク編集</a>
+<a href="${pageContext.request.contextPath}/Main">戻る</a>
 
 <form action="PostTask" method="post">
 タスク名：<input type="text" name="title"><br>
@@ -29,33 +39,42 @@
 リマインダー：<input type="time" name="reminderTime"><br>
 <input type="submit" value="追加">
 </form>
-<h2>タスク一覧</h2>
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>タイトル</th>
-        <th>詳細</th>
-        <th>状態</th>
-        <th>優先順位</th>
-        <th>日付</th>
-        <th>開始時刻</th>
-        <th>目標時間</th>
-        <th>リマインド</th>
-    </tr>
 
-    <c:forEach var="task" items="${taskList}">
-        <tr>
-            <td>${task.taskId}</td>
-            <td>${task.title}</td>
-            <td>${task.description}</td>
-            <td>${task.status}</td>
-            <td>${task.priority}</td>
-            <td>${task.schedule}</td>
-            <td>${task.startTime}</td>
-            <td>${task.target}</td>
-            <td>${task.reminderTime}</td>
-        </tr>
-    </c:forEach>
-</table>
+<h3>今日のタスク</h3>
+<c:if test="${not empty todayTasks}">
+    <table>
+        <thead>
+            <tr>
+                <th>タイトル</th>
+                <th>詳細</th>
+                <th>状態</th>
+                <th>優先順位</th>
+                <th>日付</th>
+                <th>開始時刻</th>
+                <th>目標時間</th>
+                <th>リマインド</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="t" items="${todayTasks}">
+                <tr>
+                    <td>${t.title}</td>
+                    <td>${t.description}</td>
+                    <td>${t.status}</td>
+                    <td>${t.priority}</td>
+                    <td>${t.scheduleStr}</td>
+                    <td>${t.startTimeStr}</td>
+                    <td>${t.target}分</td>
+                    <td>${t.reminderTimeStr}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</c:if>
+
+<c:if test="${empty todayTasks}">
+    <p>表示するタスクはありません。</p>
+</c:if>
+
 </body>
 </html>
