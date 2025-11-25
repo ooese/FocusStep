@@ -205,6 +205,5 @@ public class TasksDAO {
 		}
 
 		return taskList;
-	}
-
+	}	
 }

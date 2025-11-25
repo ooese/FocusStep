@@ -8,11 +8,11 @@
 <meta charset="UTF-8">
 <!-- オリジナルCSS -->
 		<link rel="stylesheet" type="text/css" href="<c:url value='/css/style.css' />">
-<title>Focus Step ― タスク追加画面</title>
+<title>Focus Step ― タスク編集画面</title>
 </head>
 <body>
 	<header class="page-header">
-		<h2>Focus Step</h2>
+		<h1>Focus Step</h1>
 		<nav>
 			<ul class="page-nav"><!--下記リンクは、ボタンを押すと真ん中の画面表示が切り替わるようにしたい-->
 				<li><a href="">今月の予定</a></li>
@@ -29,7 +29,7 @@
 			<div class="item-f">
 				<div class="speechBubble">
 					<p>
-						<h1>タスク追加</h1>
+						<h1>タスク編集</h1>
 					</p>
 				</div>
 			</div>
@@ -43,23 +43,8 @@
 				</ul>
 			</section>
 			<section class="item-center">
-				<form action="PostTask" method="post">
-					タスク名：<input type="text" name="title"><br>
-					詳細：<input type="text" name="description"><br>
-					タスクの状態：
-					<input type="radio" name="status" value="未着手"> 未着手
-					<input type="radio" name="status" value="進行中"> 進行中
-					<input type="radio" name="status" value="完了"> 完了<br>
-					優先順位：<input type="number" name="priority"><br>
-					実行日：<input type="date" name="schedule"><br>
-					開始時刻：<input type="time" name="startTime"><br>
-					目標時間（分）：<input type="number" name="target"><br>
-					リマインダー：<input type="time" name="reminderTime"><br>
-					<input type="submit" value="追加">
-				</form>
-			</section>
-			<section class="item-right">
 				<h3>今日のタスク</h3>
+				<div class="task-top">
 					<c:if test="${not empty todayTasks}">
 					    <table>
 					        <thead>
@@ -94,6 +79,9 @@
 					<c:if test="${empty todayTasks}">
 					    <p>表示するタスクはありません。</p>
 					</c:if>
+				</div>
+			</section>
+			<section class="item-right">
 			</section>
 		</div>
 	</div>

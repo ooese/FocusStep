@@ -62,7 +62,7 @@ public class GetTask extends HttpServlet {
         request.setAttribute("taskList", todayTasks);
 
         RequestDispatcher dispatcher =
-                request.getRequestDispatcher("WEB-INF/jsp/postTask.jsp");
+                request.getRequestDispatcher("WEB-INF/jsp/editTask.jsp");
         dispatcher.forward(request, response);
     }
 

@@ -11,13 +11,17 @@
 <title>Focus Step ―ログイン画面</title>
 </head>
 	<body>
-		<div class="wrapper center">
+		<div class="login wrapper center">
 			<h1>Focus Step</h1>
-			<form action="LoginServlet" method="post">
-				ログインID：<input type="loginId" name="loginId"><br> 
-				パスワード：<input type="password" name="pass"><br> 
-				<input type="submit" value="ログイン">
-			</form>
+			<section class="outline">
+				<form action="LoginServlet" method="post">
+					ログインID：<input type="loginId" name="loginId"><br> 
+					パスワード：<input type="password" name="pass"><br> 
+					<div class="button">
+						<input type="submit" value="ログイン">
+					</div>
+				</form>
+			</section>
 		</div>
 	</body>
 </html>

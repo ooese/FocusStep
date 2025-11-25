@@ -20,7 +20,6 @@ a {
     text-decoration: none;
 }
 img{
-    max-width: 150px;
     margin:0 auto 0;
 }
 /* タグ */
@@ -29,65 +28,168 @@ h2,
 h3{
     text-align: center;
 }
-h1{
-    font-size: 2rem;
-}
 h2{
     font-size: 21px;
 }
 h3{
-    font-size: 15px;
+    font-size: 1rem;
 }
 
 /* ヘッダー
 ------------------------------- */
+.header h1{
+	font-size: 2rem;
+}
 .page-header{
     height: 5rem;
     margin: 0 2rem;
     line-height: 1;
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
 }
-.main-nav {
+.page-nav{
     display: flex;
     justify-content: center;
     gap: 24px;
-    font-family: "Hiragino Kaku Gothic Pro";
     font-size: 1rem;
     list-style: none;
 }
 .page-header a{
     color: #000;
 }
-.main-nav a:hover {
+.page-nav a:hover {
     color: #999;
 }
 .page-header .gray{
     color:#999;
 }
+
 /* レイアウト
 ------------------------------- */
 .wrapper{
-    padding: 0 110px 0;
-    align-items: center;
+    padding: 0 100px 0;
 }
 .center{
-    text-align: center;
-    align-items: center;
+	text-align: center;
+	align-items: center;
 }
-
+.right{
+    text-align: right;
+}
+.outline,
+.menu li{
+	padding:2rem 0;
+	border-radius: 15px;
+	border: #000;
+	border:3px solid; 
+}
+/* ログイン画面 
+------------------------------- */
+.login h1{
+	font-size: 4rem;
+	margin: 10rem 0 2rem;
+}
+.login .outline{
+	padding:4rem 2rem;
+	margin: auto;
+	max-width: 500px;
+}
+.login .outline .button{
+	margin-top: 1rem;
+}
+/* メイン画面 
+------------------------------- */
+/*トップ*/
+.flex{
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	margin:3rem 0 1rem;
+}
+.item-f{
+    gap: 1rem;
+	margin-bottom: 1rem;
+}
+.img-inf{
+	max-height: 100px;
+}
+.speechBubble {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 13px;
+  padding: 15px 30px;
+  border-radius: 10px;
+  background-color: #faf7f0;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #000000;
+}
+.speechBubble::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 13%;
+  border-style: solid;
+  border-width: 13px 14px 0 0;
+  border-color: #faf7f0 transparent transparent;
+  translate: calc(-50% - 0.5px) 100%;
+  transform: skew(-12deg);
+  transform-origin: top;
+}
+/*メイン*/
+.grid-main{
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+	gap: 3rem;
+}
+.item-left,
+.item-center,
+.item-right{
+	display: grid;
+	border-radius: 20px;
+}
+.menu{
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	gap: 1rem;
+	list-style: none;
+    text-align: center;
+}
+.menu li{
+	background-color: #daf2f6;
+}
+.menu li a{
+	font-size: 21px;
+}
+.item-center{
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-rows: 2fr 1fr;
+	gap: 1rem;
+}
+.task-top ul li{
+	list-style: none;
+}
 /* タスク追加画面 - table
 ------------------------------- */
-th,
-td{
-    text-align: left;
-    border-bottom: 1px solid #999;
-}
-th{
-    font-weight: normal;
-    padding: 0.5rem;
-}
-td{
-    padding: 0 0.5rem;
-}
+/*th,*/
+/*td{*/
+/*    text-align: left;*/
+/*    border-bottom: 1px solid #999;*/
+/*}*/
+/*th{*/
+/*    font-weight: normal;*/
+/*    padding: 0.5rem;*/
+/*}*/
+/*td{*/
+/*    padding: 0 0.5rem;*/
+/*}*/
+/*.item{*/
+/*		align-items: flex-start;*/
+/*        gap: 2rem;*/
+/*        margin-bottom: 0;*/
+/*}*/

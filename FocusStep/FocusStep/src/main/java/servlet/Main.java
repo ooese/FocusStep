@@ -40,6 +40,26 @@ public class Main extends HttpServlet {
 		List<Task> todayTasks = util.TaskUtils.getTodayTasks(session);
 		request.setAttribute("todayTasks", todayTasks);
 
+		// ★ 今やること（nextTask）
+        Task nextTaskToDo = null;
+
+        if (todayTasks != null && !todayTasks.isEmpty()) {
+            int lowestPriority = Integer.MAX_VALUE;
+
+            for (Task t : todayTasks) {
+                String status = t.getStatus();
+
+                // ★ 完了を除外（日本語に合わせる）
+                if (!"完了".equals(status) && t.getPriority() < lowestPriority) {
+                    nextTaskToDo = t;
+                    lowestPriority = t.getPriority();
+                }
+            }
+        }
+
+        // ★ JSPへ渡す
+        request.setAttribute("nextTask", nextTaskToDo);
+        
 		// main.jsp にフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
 		dispatcher.forward(request, response);
