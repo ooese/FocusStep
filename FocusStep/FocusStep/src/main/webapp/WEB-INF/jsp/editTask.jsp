@@ -42,7 +42,7 @@
 					<li><a href="${pageContext.request.contextPath}/Main">戻る</a></li>
 				</ul>
 			</section>
-			<section class="item-center">
+			<section class="item-center outline">
 				<h3>今日のタスク</h3>
 				<div class="task-top">
 					<c:if test="${not empty todayTasks}">
@@ -81,7 +81,7 @@
 					</c:if>
 				</div>
 			</section>
-			<section class="item-right">
+			<section class="item-right outline">
 			</section>
 		</div>
 	</div>

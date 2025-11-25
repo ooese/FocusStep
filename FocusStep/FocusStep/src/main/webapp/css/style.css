@@ -84,6 +84,9 @@ h3{
 	border: #000;
 	border:3px solid; 
 }
+.button{
+	margin-top: 1rem;
+}
 /* ログイン画面 
 ------------------------------- */
 .login h1{
@@ -95,9 +98,7 @@ h3{
 	margin: auto;
 	max-width: 500px;
 }
-.login .outline .button{
-	margin-top: 1rem;
-}
+
 /* メイン画面 
 ------------------------------- */
 /*トップ*/
@@ -176,6 +177,9 @@ h3{
 }
 /* タスク追加画面 - table
 ------------------------------- */
+.post-task .item-center{
+	text-align: left;
+}
 /*th,*/
 /*td{*/
 /*    text-align: left;*/
@@ -193,3 +197,5 @@ h3{
 /*        gap: 2rem;*/
 /*        margin-bottom: 0;*/
 /*}*/
+/* タスク編集画面 - table
+------------------------------- */

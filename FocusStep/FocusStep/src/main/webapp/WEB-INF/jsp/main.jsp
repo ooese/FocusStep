@@ -40,7 +40,7 @@
 			<section class="item-left">
 				<ul class="menu">
 					<li><a href="${pageContext.request.contextPath}/PostTask">タスク追加</a></li>
-					<li><a href="${pageContext.request.contextPath}/GetTask">タスク編集</a></li>
+					<li><a href="${pageContext.request.contextPath}/EditTask">タスク編集</a></li>
 					<li><a href="Navigation?action=review">今日の振り返り</a></li>
 					<li><a href="Navigation?action=prepare">明日の準備</a></li>
 				</ul>

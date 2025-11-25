@@ -21,7 +21,7 @@
 			</ul>
 		</nav>
 	</header>
-	<div class="wrapper center">
+	<div class="post-task wrapper center">
 		<div class="flex">
 			<div class="item">
 				<img class="img-inf" src="images/information.png">
@@ -38,11 +38,11 @@
 			<section class="item-left">
 				<ul class="menu">
 					<li><a href="${pageContext.request.contextPath}/PostTask">タスク追加</a></li>
-					<li><a href="${pageContext.request.contextPath}/GetTask">タスク編集</a></li>
+					<li><a href="${pageContext.request.contextPath}/EditTask">タスク編集</a></li>
 					<li><a href="${pageContext.request.contextPath}/Main">戻る</a></li>
 				</ul>
 			</section>
-			<section class="item-center">
+			<section class="item-center outline">
 				<form action="PostTask" method="post">
 					タスク名：<input type="text" name="title"><br>
 					詳細：<input type="text" name="description"><br>
@@ -55,44 +55,22 @@
 					開始時刻：<input type="time" name="startTime"><br>
 					目標時間（分）：<input type="number" name="target"><br>
 					リマインダー：<input type="time" name="reminderTime"><br>
-					<input type="submit" value="追加">
+					<div class="button">
+						<input type="submit" value="追加">
+					</div>
 				</form>
 			</section>
-			<section class="item-right">
+			<section class="item-right outline">
 				<h3>今日のタスク</h3>
 					<c:if test="${not empty todayTasks}">
-					    <table>
-					        <thead>
-					            <tr>
-					                <th>タイトル</th>
-					                <th>詳細</th>
-					                <th>状態</th>
-					                <th>優先順位</th>
-					                <th>日付</th>
-					                <th>開始時刻</th>
-					                <th>目標時間</th>
-					                <th>リマインド</th>
-					            </tr>
-					        </thead>
-					        <tbody>
-					            <c:forEach var="t" items="${todayTasks}">
-					                <tr>
-					                    <td>${t.title}</td>
-					                    <td>${t.description}</td>
-					                    <td>${t.status}</td>
-					                    <td>${t.priority}</td>
-					                    <td>${t.scheduleStr}</td>
-					                    <td>${t.startTimeStr}</td>
-					                    <td>${t.target}分</td>
-					                    <td>${t.reminderTimeStr}</td>
-					                </tr>
-					            </c:forEach>
-					        </tbody>
-					    </table>
+						<ul>
+							<c:forEach var="t" items="${todayTasks}">
+								<li>${t.title}</li>
+							</c:forEach>
+						</ul>
 					</c:if>
-					
 					<c:if test="${empty todayTasks}">
-					    <p>表示するタスクはありません。</p>
+						<p>表示するタスクがありません。</p>
 					</c:if>
 			</section>
 		</div>
