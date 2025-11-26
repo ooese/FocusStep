@@ -28,17 +28,23 @@ h2,
 h3{
     text-align: center;
 }
+h1{
+	font-size: 21px;
+}
 h2{
-    font-size: 21px;
+    font-size: 17px;
 }
 h3{
     font-size: 1rem;
+	font-style: bold;
 }
-
+h4{
+	font-size: 3rem;
+}
 /* ヘッダー
 ------------------------------- */
-.header h1{
-	font-size: 2rem;
+.header h2{
+	font-size: 1.5rem;
 }
 .page-header{
     height: 5rem;
@@ -64,11 +70,10 @@ h3{
 .page-header .gray{
     color:#999;
 }
-
 /* レイアウト
 ------------------------------- */
 .wrapper{
-    padding: 0 100px 0;
+    padding: 0 50px 0;
 }
 .center{
 	text-align: center;
@@ -85,6 +90,7 @@ h3{
 	border:3px solid; 
 }
 .button{
+	text-align: right;
 	margin-top: 1rem;
 }
 /* ログイン画面 
@@ -98,19 +104,20 @@ h3{
 	margin: auto;
 	max-width: 500px;
 }
-
 /* メイン画面 
 ------------------------------- */
 /*トップ*/
-.flex{
+.top{
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
 	margin:3rem 0 1rem;
 }
-.item-f{
-    gap: 1rem;
+.item-speech{
 	margin-bottom: 1rem;
+}
+.item-speech h2{
+	text-align: left;
 }
 .img-inf{
 	max-height: 100px;
@@ -141,61 +148,122 @@ h3{
   transform-origin: top;
 }
 /*メイン*/
-.grid-main{
-	display: grid;
-	grid-template-columns: 1fr 2fr 1fr;
-	gap: 3rem;
+.main{
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 2rem;
 }
-.item-left,
-.item-center,
-.item-right{
-	display: grid;
-	border-radius: 20px;
+.item-menu{
+	flex-basis: 180px;
+}
+.item-200{
+	flex-basis: 200px;
+}
+.item-flex{
+	flex-grow: 1;
+	max-width:600px;
+	display: flex;
+	flex-flow: column;
+	gap: 1rem;
+}
+.main .item-flex .item-top{
+	align-items: center;
 }
 .menu{
 	display: flex;
 	flex-flow: column;
-	justify-content: space-between;
 	gap: 1rem;
-	list-style: none;
+	height: 50px;
+	width: 180px;
     text-align: center;
+	list-style: none;
 }
 .menu li{
 	background-color: #daf2f6;
 }
 .menu li a{
-	font-size: 21px;
-}
-.item-center{
-	display: grid;
-	grid-auto-flow: column;
-	grid-template-rows: 2fr 1fr;
-	gap: 1rem;
+	font-size: 17px;
 }
 .task-top ul li{
 	list-style: none;
 }
-/* タスク追加画面 - table
-------------------------------- */
-.post-task .item-center{
-	text-align: left;
+
+/*タイマー*/
+.item-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: sans-serif;
+  padding: 2rem;
 }
-/*th,*/
-/*td{*/
-/*    text-align: left;*/
-/*    border-bottom: 1px solid #999;*/
-/*}*/
-/*th{*/
-/*    font-weight: normal;*/
-/*    padding: 0.5rem;*/
-/*}*/
-/*td{*/
-/*    padding: 0 0.5rem;*/
-/*}*/
-/*.item{*/
-/*		align-items: flex-start;*/
-/*        gap: 2rem;*/
-/*        margin-bottom: 0;*/
-/*}*/
-/* タスク編集画面 - table
+
+.timer-ui {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.time-display {
+	display: block;
+	width: 120px;
+	  font-size: 20px;
+	  background-color: #f0f0f0;
+	  margin-top: 1rem;
+	  padding: 43px 0;
+	  border-radius: 20px;
+}
+
+.circle-button {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.start {
+  background-color: #ffffff;
+  border: 2px solid #333;
+}
+
+.finish {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.pause {
+  background: #ffffff;
+  border: 2px solid #333;
+}
+/* タスク追加画面
 ------------------------------- */
+.post-task .item-flex{
+	text-align: left;
+	padding:2rem 2rem;
+}
+.post-task li{
+	list-style: none;
+}
+/* タスク編集画面
+------------------------------- */
+.edit-task .item-flex{
+	font-size: 12px;
+}
+th,
+td{
+    text-align: left;
+    border-bottom: 1px solid #999;
+	border-spacing: 0;
+}
+th{
+	text-align: center;
+	font-style: bold;
+	
+}
+td{
+    padding: 0 0.5rem;
+}

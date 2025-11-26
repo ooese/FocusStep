@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -14,7 +13,6 @@ import jakarta.servlet.http.HttpSession;
 import dao.AccountsDAO;
 import model.Account;
 import model.Login;
-import model.Task;
 
 /**
  * Servlet implementation class LoginServlet
@@ -59,29 +57,6 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("loginAccount", account);
             session.setAttribute("userId", account.getUserId());
             session.setAttribute("fullName", account.getNameSei() + " " + account.getNameMei());
-
-            // 今日のタスクを共通メソッドで取得
-            List<Task> todayTasks = util.TaskUtils.getTodayTasks(session);
-            request.setAttribute("todayTasks", todayTasks);
-            
-         // 今やること選定（①ステータスが完了以外②最優先タスク）
-            Task nextTaskToDo = null;
-            if (todayTasks != null && !todayTasks.isEmpty()) {
-                int lowestPriority = Integer.MAX_VALUE;
-
-                for (Task t : todayTasks) {
-                    String status = t.getStatus();
-
-                    // ★ 完了を除外（日本語に合わせる）
-                    if (!"完了".equals(status) && t.getPriority() < lowestPriority) {
-                        nextTaskToDo = t;
-                        lowestPriority = t.getPriority();
-                    }
-                }
-            }
-
-            //★ JSPへ渡す
-            session.setAttribute("nextTaskToDo", nextTaskToDo);
 
             //Mainサーブレットにリダイレクト
             response.sendRedirect(request.getContextPath() + "/Main");

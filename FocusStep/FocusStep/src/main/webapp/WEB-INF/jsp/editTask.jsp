@@ -14,19 +14,19 @@
 	<header class="page-header">
 		<h1>Focus Step</h1>
 		<nav>
-			<ul class="page-nav"><!--下記リンクは、ボタンを押すと真ん中の画面表示が切り替わるようにしたい-->
+			<ul class="page-nav">
 				<li><a href="">今月の予定</a></li>
 				<li><a href="">今までの振り返り</a></li>
 				<li><a href="Logout">ログアウト</a></li>
 			</ul>
 		</nav>
 	</header>
-	<div class="wrapper center">
-		<div class="flex">
+	<div class="edit-task wrapper center">
+		<div class="top">
 			<div class="item">
 				<img class="img-inf" src="images/information.png">
 			</div>
-			<div class="item-f">
+			<div class="item-speech">
 				<div class="speechBubble">
 					<p>
 						<h1>タスク編集</h1>
@@ -34,15 +34,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="grid-main">
-			<section class="item-left">
+		<div class="main">
+			<section class="item-menu">
 				<ul class="menu">
-					<li><a href="${pageContext.request.contextPath}/PostTask">タスク追加</a></li>
-					<li><a href="${pageContext.request.contextPath}/GetTask">タスク編集</a></li>
-					<li><a href="${pageContext.request.contextPath}/Main">戻る</a></li>
+					<li><a href="PostTask">タスク追加</a></li>
+					<li><a href="EditTask">タスク編集</a></li>
+					<li><a href="Main">戻る</a></li>
 				</ul>
 			</section>
-			<section class="item-center outline">
+			<section class="item-flex outline">
 				<h3>今日のタスク</h3>
 				<div class="task-top">
 					<c:if test="${not empty todayTasks}">
@@ -52,10 +52,10 @@
 					                <th>タイトル</th>
 					                <th>詳細</th>
 					                <th>状態</th>
-					                <th>優先順位</th>
+					                <th>優先<br>順位</th>
 					                <th>日付</th>
-					                <th>開始時刻</th>
-					                <th>目標時間</th>
+					                <th>開始<br>時刻</th>
+					                <th>目標<br>時間</th>
 					                <th>リマインド</th>
 					            </tr>
 					        </thead>
@@ -75,13 +75,10 @@
 					        </tbody>
 					    </table>
 					</c:if>
-					
 					<c:if test="${empty todayTasks}">
 					    <p>表示するタスクはありません。</p>
 					</c:if>
 				</div>
-			</section>
-			<section class="item-right outline">
 			</section>
 		</div>
 	</div>

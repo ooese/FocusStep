@@ -40,9 +40,8 @@ public class Main extends HttpServlet {
 		List<Task> todayTasks = util.TaskUtils.getTodayTasks(session);
 		request.setAttribute("todayTasks", todayTasks);
 
-		// ★ 今やること（nextTask）
+		// 今やること選定（①ステータスが完了以外②最優先タスク）
         Task nextTaskToDo = null;
-
         if (todayTasks != null && !todayTasks.isEmpty()) {
             int lowestPriority = Integer.MAX_VALUE;
 

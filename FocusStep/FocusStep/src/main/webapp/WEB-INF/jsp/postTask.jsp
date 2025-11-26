@@ -22,11 +22,11 @@
 		</nav>
 	</header>
 	<div class="post-task wrapper center">
-		<div class="flex">
+		<div class="top">
 			<div class="item">
 				<img class="img-inf" src="images/information.png">
 			</div>
-			<div class="item-f">
+			<div class="item-speech">
 				<div class="speechBubble">
 					<p>
 						<h1>タスク追加</h1>
@@ -34,15 +34,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="grid-main">
-			<section class="item-left">
+		<div class="main">
+			<section class="item-menu">
 				<ul class="menu">
-					<li><a href="${pageContext.request.contextPath}/PostTask">タスク追加</a></li>
-					<li><a href="${pageContext.request.contextPath}/EditTask">タスク編集</a></li>
-					<li><a href="${pageContext.request.contextPath}/Main">戻る</a></li>
+					<li><a href="PostTask">タスク追加</a></li>
+					<li><a href="EditTask">タスク編集</a></li>
+					<li><a href="Main">戻る</a></li>
 				</ul>
 			</section>
-			<section class="item-center outline">
+			<section class="item-flex outline">
 				<form action="PostTask" method="post">
 					タスク名：<input type="text" name="title"><br>
 					詳細：<input type="text" name="description"><br>
@@ -60,7 +60,7 @@
 					</div>
 				</form>
 			</section>
-			<section class="item-right outline">
+			<section class="item-200 outline">
 				<h3>今日のタスク</h3>
 					<c:if test="${not empty todayTasks}">
 						<ul>

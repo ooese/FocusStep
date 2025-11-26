@@ -206,4 +206,42 @@ public class TasksDAO {
 
 		return taskList;
 	}	
+	public void updateActualTime(int taskId, int actualMinutes) {
+	    String sql = "UPDATE TASKS SET ACTUAL_DURATION_MIN = ? WHERE task_id = ?";
+
+	    try (Connection conn = getConnection();
+	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+	        pstmt.setInt(1, actualMinutes);
+	        pstmt.setInt(2, taskId);
+	        pstmt.executeUpdate();
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+	// 共通して DB に接続するメソッド
+	private Connection getConnection() throws SQLException {
+	    try {
+	        Class.forName("org.h2.Driver");
+	    } catch (ClassNotFoundException e) {
+	        throw new IllegalStateException("JDBCドライバを読み込めませんでした");
+	    }
+
+	    return DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
+	}
+	public void updateStatus(int taskId, String status) {
+	    String sql = "UPDATE TASKS SET STATUS = ? WHERE task_id = ?";
+
+	    try (Connection conn = getConnection();
+	         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+	        stmt.setString(1, status);
+	        stmt.setInt(2, taskId);
+
+	        stmt.executeUpdate();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
 }
