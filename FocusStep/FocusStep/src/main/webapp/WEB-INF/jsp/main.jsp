@@ -122,9 +122,9 @@ document.addEventListener("DOMContentLoaded", () => {
     	console.log("updateTimer called");//確認用
         const minutes = Math.floor(totalSeconds / 60);
         const seconds = totalSeconds % 60;
-<!--        const mm = String(minutes).padStart(2, "0");-->
-<!--        const ss = String(seconds).padStart(2, "0");-->
-        timerDisplay.innerText = `${mm}:${ss}`;
+        const mm = String(minutes).padStart(2, "0");
+        const ss = String(seconds).padStart(2, "0");
+        timerDisplay.innerHTML = `${mm}:${ss}`;
     }
 
     // 初期表示
