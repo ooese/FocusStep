@@ -13,8 +13,8 @@
 	<body>
 		<div class="login wrapper center">
 			<h1>Focus Step</h1>
-			<section class="outline">
-				<form action="LoginServlet" method="post">
+			<section class="item-flex outline">
+				<form action="LoginServlet" method="post" class="form">
 					ログインID：<input type="loginId" name="loginId"><br> 
 					パスワード：<input type="password" name="pass"><br> 
 					<div class="button">

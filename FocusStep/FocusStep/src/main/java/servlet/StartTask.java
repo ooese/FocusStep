@@ -11,16 +11,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import dao.TasksDAO;
 
 /**
- * Servlet implementation class FinishTask
+ * Servlet implementation class StartTask
  */
-@WebServlet("/FinishTask")
-public class FinishTask extends HttpServlet {
+@WebServlet("/StartTask")
+public class StartTask extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FinishTask() {
+    public StartTask() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,18 +37,17 @@ public class FinishTask extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		int taskId = Integer.parseInt(request.getParameter("taskId"));
-        int actualMinutes = Integer.parseInt(request.getParameter("actualMinutes"));
+        String startTimeStr = request.getParameter("startTime");
+
+        java.sql.Timestamp startTime = java.sql.Timestamp.valueOf(
+            startTimeStr.replace("T", " ").replace("Z", "")
+        );
 
         TasksDAO dao = new TasksDAO();
-     // 実質時間を保存
-        dao.updateActualTime(taskId, actualMinutes);
-     // ステータスを「完了」に変更
-        dao.updateStatus(taskId, "完了");
+        dao.updateStartTime(taskId, startTime);
 
-        response.setContentType("text/plain; charset=UTF-8");
-        response.getWriter().write("success");
+        response.getWriter().write("OK");
 	}
 
 }

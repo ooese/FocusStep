@@ -16,6 +16,7 @@
 		<h2>Focus Step</h2>
 		<nav>
 			<ul class="page-nav">
+				<li><a href="Test.jsp">テスト</a></li>
 				<li><a href="">今月の予定</a></li>
 				<li><a href="">今までの振り返り</a></li>
 				<li><a href="Logout">ログアウト</a></li>
@@ -51,33 +52,28 @@
 				<div class="item-top outline">
 					<h2>今日のタスク</h2>
 					<c:if test="${not empty todayTasks}">
-<!--						<ul>-->
-<!--							<c:forEach var="t" items="${todayTasks}">-->
-<!--								<li>${t.startTimeStr}　${t.title}　${t.status}　${t.target}分</li>-->
-<!--							</c:forEach>-->
-<!--						</ul>-->
-						 <table>
-					        <thead>
-					            <tr>
-					            	<th>開始時刻</th>
-					                <th>タスク</th>
-					                <th>状態</th>
-					                <th>優先順位</th>
-					                <th>目標時間</th>
-					            </tr>
-					        </thead>
-					        <tbody>
-					            <c:forEach var="t" items="${todayTasks}">
-					                <tr>
-					                <td>${t.startTimeStr}</td>
-					                    <td>${t.title}</td>
-					                    <td>${t.status}</td>
-					                    <td>${t.priority}</td>
-					                    <td>${t.target}分</td>
-					                </tr>
-					            </c:forEach>
-					        </tbody>
-					    </table>
+							 <table class="table-task">
+						        <thead>
+						            <tr>
+						            	<th>優先順位</th>
+						                <th>タスク</th>
+						                <th>状態</th>
+						                <th>目標時間</th>
+						                <th>実質時間</th>
+						            </tr>
+						        </thead>
+						        <tbody>
+						            <c:forEach var="t" items="${todayTasks}">
+						                <tr>
+						                	<td>${t.priority}</td>
+						                    <td>${t.title}</td>
+						                    <td>${t.status}</td>
+						                    <td>${t.target}分</td>
+						                    <td>${t.actual}分</td>
+						                </tr>
+						            </c:forEach>
+						        </tbody>
+						    </table>
 					</c:if>
 					<c:if test="${empty todayTasks}">
 						<p>表示するタスクがありません。</p>
@@ -91,7 +87,6 @@
 				    </c:if>
 				</div>
 			</section>
-
 			<section class="item-timer outline">
 			  <h2>タイマー</h2>
 			  <c:if test="${not empty nextTask}">
@@ -110,24 +105,32 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const timerDisplay = document.getElementById("timerDisplay");
+    console.log("timerDisplay:", timerDisplay);//確認用
     const startBtn = document.getElementById("startBtn");
     const pauseBtn = document.getElementById("pauseBtn");
     const finishBtn = document.getElementById("finishBtn");
     const taskIdInput = document.getElementById("taskId");
 
-    let totalSeconds = 0;
-    let running = false;
-    let timerInterval = null;
+    if (!timerDisplay || !startBtn || !pauseBtn || !finishBtn || !taskIdInput) return;
 
+    let totalSeconds = 0;     // 経過時間（秒）
+    let running = false;      // タイマーが動作中か
+    let timerInterval = null; // setIntervalのID
+
+    // タイマー表示を更新
     function updateTimer() {
+    	console.log("updateTimer called");//確認用
         const minutes = Math.floor(totalSeconds / 60);
         const seconds = totalSeconds % 60;
-        timerDisplay.innerText = `${minutes}分 ${seconds < 10 ? '0' : ''}${seconds}秒`;
+<!--        const mm = String(minutes).padStart(2, "0");-->
+<!--        const ss = String(seconds).padStart(2, "0");-->
+        timerDisplay.innerText = `${mm}:${ss}`;
     }
 
-    // ページ読み込み時に必ず0分0秒を表示
+    // 初期表示
     updateTimer();
 
+    // スタート / 再開
     startBtn.addEventListener("click", () => {
         if (running) return;
         if (!taskIdInput.value) {
@@ -136,16 +139,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         running = true;
         timerInterval = setInterval(() => {
-            totalSeconds++;
+            totalSeconds += 1;
             updateTimer();
         }, 1000);
     });
 
+    // 一時停止
     pauseBtn.addEventListener("click", () => {
+        if (!running) return;
         running = false;
         clearInterval(timerInterval);
     });
 
+    // 完了
     finishBtn.addEventListener("click", () => {
         if (!taskIdInput.value) {
             alert("完了するタスクがありません。");
@@ -163,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(res => res.text())
         .then(msg => {
-            alert("完了しました！ 実績: " + totalMinutes + "分");
+            alert("記録が完了しました。 実績時間: " + totalMinutes + "分");
             location.reload();
         });
     });
@@ -171,4 +177,3 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
-

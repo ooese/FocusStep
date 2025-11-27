@@ -244,4 +244,58 @@ public class TasksDAO {
 	        e.printStackTrace();
 	    }
 	}
+	public List<Task> findByDate(int userId, Date date) {
+	    List<Task> taskList = new ArrayList<>();
+
+	    String sql = "SELECT TASK_ID, USER_ID, TITLE, DESCRIPTION, STATUS, PRIORITY, "
+	            + "SCHEDULED_DATE, START_TIME, TARGET_DURATION_MIN, ACTUAL_DURATION_MIN, REMINDER_TIME "
+	            + "FROM TASKS "
+	            + "WHERE USER_ID = ? AND SCHEDULED_DATE = ? "
+	            + "ORDER BY START_TIME ASC";
+
+	    try (Connection conn = getConnection();
+	         PreparedStatement pStmt = conn.prepareStatement(sql)) {
+
+	        pStmt.setInt(1, userId);
+	        pStmt.setDate(2, date);
+
+	        ResultSet rs = pStmt.executeQuery();
+
+	        while (rs.next()) {
+	            Task task = new Task(
+	                    rs.getInt("TASK_ID"),
+	                    rs.getInt("USER_ID"),
+	                    rs.getString("TITLE"),
+	                    rs.getString("DESCRIPTION"),
+	                    rs.getString("STATUS"),
+	                    rs.getInt("PRIORITY"),
+	                    rs.getDate("SCHEDULED_DATE"),
+	                    rs.getTime("START_TIME"),
+	                    rs.getInt("TARGET_DURATION_MIN"),
+	                    rs.getInt("ACTUAL_DURATION_MIN"),
+	                    rs.getTime("REMINDER_TIME"));
+	            taskList.add(task);
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return taskList;
+	}
+	public boolean updateStartTime(int taskId, java.sql.Timestamp startTime) {
+	    String sql = "UPDATE tasks SET start_time = ? WHERE task_id = ?";
+
+	    try (Connection conn = getConnection();
+	         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+	        stmt.setTimestamp(1, startTime); // startTimeをセット
+	        stmt.setInt(2, taskId);
+	        return stmt.executeUpdate() == 1;
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
 }

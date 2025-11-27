@@ -43,6 +43,10 @@ public class PostTask extends HttpServlet {
         List<Task> todayTasks = util.TaskUtils.getTodayTasks(session);
         request.setAttribute("todayTasks", todayTasks);
 
+        //明日のタスクを共通メソッドで取得
+        List<Task> tomorrowTasks = TaskUtils.getTomorrowTasks(session);
+        request.setAttribute("tomorrowTasks", tomorrowTasks);
+        
         // postTask.jsp にフォワード
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/postTask.jsp");
         dispatcher.forward(request, response);
@@ -94,6 +98,10 @@ public class PostTask extends HttpServlet {
 		// 追加後に今日のタスク一覧を再取得
 		List<Task> todayTasks = TaskUtils.getTodayTasks(session);
 		request.setAttribute("todayTasks", todayTasks);
+		
+		//明日のタスク
+		List<Task> tomorrowTasks = TaskUtils.getTomorrowTasks(session);
+		request.setAttribute("tomorrowTasks", tomorrowTasks);
 
 		//タスク追加画面にフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/postTask.jsp");

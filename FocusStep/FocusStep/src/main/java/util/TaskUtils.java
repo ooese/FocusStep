@@ -1,6 +1,8 @@
 package util;
 
+import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,5 +41,18 @@ public class TaskUtils {
             todayTasks.add(task);
         }
 		return todayTasks;
+	}
+	
+	public static List<Task> getTomorrowTasks(HttpSession session) {
+	    Integer userId = (Integer) session.getAttribute("userId");
+	    if (userId == null) return new ArrayList<>();
+
+	    TasksDAO dao = new TasksDAO();
+
+	    // 明日の日付を取得
+	    LocalDate tomorrow = LocalDate.now().plusDays(1);
+	    Date sqlTomorrow = Date.valueOf(tomorrow);
+
+	    return dao.findByDate(userId, sqlTomorrow);
 	}
 }

@@ -93,6 +93,9 @@ h4{
 	text-align: right;
 	margin-top: 1rem;
 }
+.form{
+	margin: 0 auto;
+}
 /* ログイン画面 
 ------------------------------- */
 .login h1{
@@ -153,16 +156,20 @@ h4{
 	justify-content: center;
 	align-items: flex-start;
 	gap: 2rem;
+	max-width: 900px;
+	margin: 0 auto;
 }
 .item-menu{
 	flex-basis: 180px;
 }
 .item-200{
 	flex-basis: 200px;
+	display: flex;
+	flex-flow: column;
+	gap: 1rem;
 }
 .item-flex{
 	flex-grow: 1;
-	max-width:600px;
 	display: flex;
 	flex-flow: column;
 	gap: 1rem;
@@ -185,9 +192,6 @@ h4{
 .menu li a{
 	font-size: 17px;
 }
-.task-top ul li{
-	list-style: none;
-}
 
 /*タイマー*/
 .item-timer {
@@ -206,12 +210,11 @@ h4{
 }
 
 .time-display {
-	display: block;
 	width: 120px;
 	  font-size: 20px;
 	  background-color: #f0f0f0;
 	  margin-top: 1rem;
-	  padding: 43px 0;
+	  padding: 23px 0;
 	  border-radius: 20px;
 }
 
@@ -252,6 +255,9 @@ h4{
 ------------------------------- */
 .edit-task .item-flex{
 	font-size: 12px;
+}
+.table-task{
+	margin:0 auto;
 }
 th,
 td{

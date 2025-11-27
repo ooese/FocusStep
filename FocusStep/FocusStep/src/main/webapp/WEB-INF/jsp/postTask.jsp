@@ -43,7 +43,7 @@
 				</ul>
 			</section>
 			<section class="item-flex outline">
-				<form action="PostTask" method="post">
+				<form action="PostTask" method="post" class="form">
 					タスク名：<input type="text" name="title"><br>
 					詳細：<input type="text" name="description"><br>
 					タスクの状態：
@@ -60,8 +60,9 @@
 					</div>
 				</form>
 			</section>
-			<section class="item-200 outline">
-				<h3>今日のタスク</h3>
+			<section class="item-200">
+				<div class="item-top outline">
+					<h3>今日のタスク</h3>
 					<c:if test="${not empty todayTasks}">
 						<ul>
 							<c:forEach var="t" items="${todayTasks}">
@@ -72,7 +73,21 @@
 					<c:if test="${empty todayTasks}">
 						<p>表示するタスクがありません。</p>
 					</c:if>
+				</div> 
+				<div class="item-bottom outline">
+					<h3>明日のタスク</h3>
+					<c:if test="${not empty tomorrowTasks}">
+					    <c:forEach var="t" items="${tomorrowTasks}">
+					        <p>${t.title}</p>
+					    </c:forEach>
+					</c:if>
+					<c:if test="${empty tomorrowTasks}">
+						<p>表示するタスクがありません。</p>
+					</c:if>
+				</div> 
 			</section>
+			
+			
 		</div>
 	</div>
 </body>

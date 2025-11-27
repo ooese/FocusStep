@@ -44,9 +44,8 @@
 			</section>
 			<section class="item-flex outline">
 				<h3>今日のタスク</h3>
-				<div class="task-top">
 					<c:if test="${not empty todayTasks}">
-					    <table>
+					    <table class="table-task">
 					        <thead>
 					            <tr>
 					                <th>タイトル</th>
@@ -78,7 +77,6 @@
 					<c:if test="${empty todayTasks}">
 					    <p>表示するタスクはありません。</p>
 					</c:if>
-				</div>
 			</section>
 		</div>
 	</div>
